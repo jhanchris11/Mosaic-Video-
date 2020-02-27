@@ -10,9 +10,20 @@ function Cortar(ruta) {
                 if (err) console.log('Error ' + err)
 
                 video.setVideoSize("640x480");
-                // video.setDisableAudio();
-                
+
+                video.setDisableAudio();
+
                 video.setVideoDuration('00:00:20');
+
+                video.setVideoFrameRate(30);
+
+                // video.setAudioFrequency(48)
+
+                // video.setAudioCodec('libfaac');
+
+                // video.setAudioCodec('libfaac')
+
+                // video.setAudioCodec('libmp3lame');
 
                 video.save(path.join(__dirname, `../files/cortados/${i}.mp4`), (err, file) => {
 
@@ -20,9 +31,11 @@ function Cortar(ruta) {
                     console.log(`Se recorto correctamente el archivo ${file}`)
 
                     array.push(file);
+            
                     if (contador >= ruta.length - 1) {
                         resolve(array);
                     }
+                   
                     contador++;
                 })
             })
